@@ -1,0 +1,22 @@
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  .navbar {
+    padding: 30px 0;
+    a {
+      font-family: "Dosis", sans-serif;
+      font-size: 14px;
+      color: #abb7c4;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin: 0 15px;
+      transition: 0.3s;
+      &:hover {
+        color: #dcf836;
+        text-decoration: none;
+      }
+    }
+  }
+}
