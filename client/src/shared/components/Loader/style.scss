@@ -28,7 +28,7 @@
       border-top: 5px solid transparent;
       width: 70px;
       height: 70px;
-      animation: spin1 2s infinite linear;
+      animation: loaderYellow 2s infinite linear;
     }
     &:nth-child(2) {
       border: 5px solid #dd003f;
@@ -37,7 +37,7 @@
       left: 20px;
       width: 30px;
       height: 30px;
-      animation: spin2 1s infinite linear;
+      animation: loaderRed 1s infinite linear;
       margin-left: 35px;
     }
   }
@@ -49,7 +49,7 @@
   }
 }
 
-@keyframes spin1 {
+@keyframes loaderYellow {
   0% {
     transform: rotate(360deg);
     opacity: 1;
@@ -64,7 +64,7 @@
   }
 }
 
-@keyframes spin2 {
+@keyframes loaderRed {
   0% {
     transform: rotate(0deg);
     opacity: 0.75;
