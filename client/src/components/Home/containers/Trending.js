@@ -1,12 +1,16 @@
 import React, { useEffect, useReducer } from "react";
+import { useDispatch } from "react-redux";
 import Trending from "../components/Trending";
 import { getTrending, getMovie, getMovieTrailer } from "../services/Trending";
 import { reducer } from "../reducers/Trending";
 import { setTranding, setTrailer, setImage } from "../actions/Trending";
 import { minutesToHours } from "../../../utils/helpers";
 
+import { setLoading } from "../../../shared/components/Loader/action";
+
 const TrendingContainer = () => {
     const [state, dispatchAction] = useReducer(reducer, {});
+    const dispatch = useDispatch();
 
     useEffect(() => {
         getTrendingHandler();
@@ -14,6 +18,7 @@ const TrendingContainer = () => {
     }, []);
 
     const getTrendingHandler = async () => {
+        dispatch(setLoading(true));
         const trandingList = await getTrending();
         Promise.all(
             trandingList.map(async movie => {
@@ -28,10 +33,12 @@ const TrendingContainer = () => {
                     ...movieData
                 };
             })
-        ).then(response => {
-            dispatchAction(setTranding(response));
-            dispatchAction(setImage(response[0].image));
-        });
+        )
+            .then(response => {
+                dispatchAction(setTranding(response));
+                dispatchAction(setImage(response[0].image));
+            })
+            .then(response => dispatch(setLoading(false)));
     };
 
     const getMovieHandler = async id => {
