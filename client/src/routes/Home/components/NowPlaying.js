@@ -17,8 +17,8 @@ import IosArrowForward from "react-ionicons/lib/IosArrowForward";
 
 import "react-modal-video/scss/modal-video.scss";
 
-const Trending = props => {
-    const { tranding, trailer, setTrailer, image, setImage } = props;
+const nowPlaying = props => {
+    const { nowPlaying, trailer, setTrailer, image, setImage } = props;
     function PrevArrow(props) {
         const { onClick } = props;
         return (
@@ -79,8 +79,8 @@ const Trending = props => {
         <div className="slider" style={image && {backgroundImage: 'url(' + process.env.REACT_APP_IMAGE_URL + image + ')'}}>
             <div className="container">
                 <Slider {...settings}>
-                    {tranding &&
-                        tranding.map(movie => {
+                    {nowPlaying &&
+                        nowPlaying.map(movie => {
                             return (
                                 <div key={movie.id} className="movie-item">
                                     <div className="d-flex">
@@ -235,4 +235,4 @@ const Trending = props => {
         </div>
     );
 };
-export default Trending;
+export default nowPlaying;

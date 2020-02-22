@@ -20,7 +20,7 @@ import poster11 from "../../../shared/assets/mv-it11.jpg";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "../style.scss";
-import Trending from "../containers/Trending";
+import NowPlaying from "../containers/NowPlaying";
 
 const Home = () => {
     const multipleSetting = {
@@ -57,12 +57,12 @@ const Home = () => {
     };
     return (
         <>
-            <Trending />
+            <NowPlaying />
             <div className="movie-items full-width">
                 <div className="row">
                     <div className="col-md-12">
                         <div className="title-hd">
-                            <h2>in theater</h2>
+                            <h2>Movies</h2>
                             <Link to="movie" className="viewall">
                                 View all <IosArrowForward fontSize="15px" />
                             </Link>
@@ -305,7 +305,7 @@ const Home = () => {
                             </Slider>
                         </div>
                         <div className="title-hd">
-                            <h2>in theater</h2>
+                            <h2>Serials</h2>
                             <Link to="movie" className="viewall">
                                 View all <IosArrowForward fontSize="15px" />
                             </Link>

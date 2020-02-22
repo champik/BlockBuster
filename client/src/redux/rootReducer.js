@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import loading from "../shared/components/Loader/reducer";
+import loading from "./loading/reducer";
 
 export default combineReducers({
     loading,

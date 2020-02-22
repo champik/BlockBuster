@@ -1,27 +1,28 @@
 import React, { useEffect, useReducer } from "react";
 import { useDispatch } from "react-redux";
-import Trending from "../components/Trending";
-import { getTrending, getMovie, getMovieTrailer } from "../services/Trending";
-import { reducer } from "../reducers/Trending";
-import { setTranding, setTrailer, setImage } from "../actions/Trending";
+import NowPlaying from "../components/NowPlaying";
+import { getNowPlaying } from "../services/NowPlaying";
+import { getMovie, getMovieTrailer } from "../../../shared/services";
+import { reducer } from "../reducers/NowPlaying";
+import { setNowPlaying, setTrailer, setImage } from "../actions/NowPlaying";
 import { minutesToHours } from "../../../utils/helpers";
 
-import { setLoading } from "../../../shared/components/Loader/action";
+import { setLoading } from "../../../redux/loading/action";
 
-const TrendingContainer = () => {
+const NowPlayingContainer = () => {
     const [state, dispatchAction] = useReducer(reducer, {});
     const dispatch = useDispatch();
 
     useEffect(() => {
-        getTrendingHandler();
+        getNowPlayingHandler();
         // eslint-disable-next-line
     }, []);
 
-    const getTrendingHandler = async () => {
+    const getNowPlayingHandler = async () => {
         dispatch(setLoading(true));
-        const trandingList = await getTrending();
+        const nowPlayingList = await getNowPlaying();
         Promise.all(
-            trandingList.map(async movie => {
+            nowPlayingList.map(async movie => {
                 const movieData = await getMovieHandler(movie.id);
                 return {
                     id: movie.id,
@@ -34,11 +35,12 @@ const TrendingContainer = () => {
                 };
             })
         )
+            .then(response => response.sort((a, b) => b.rating - a.rating))
             .then(response => {
-                dispatchAction(setTranding(response));
+                dispatchAction(setNowPlaying(response));
                 dispatchAction(setImage(response[0].image));
             })
-            .then(response => dispatch(setLoading(false)));
+            .then(() => dispatch(setLoading(false)));
     };
 
     const getMovieHandler = async id => {
@@ -59,13 +61,13 @@ const TrendingContainer = () => {
         dispatchAction(setTrailer(key));
     };
     const setImageHandler = index => {
-        const activeImage = state.tranding[index].image;
+        const activeImage = state.nowPlaying[index].image;
         dispatchAction(setImage(activeImage));
     };
 
     return (
-        <Trending
-            tranding={state.tranding}
+        <NowPlaying
+            nowPlaying={state.nowPlaying}
             trailer={state.trailer}
             setTrailer={setTrailerHandler}
             image={state.image}
@@ -74,4 +76,4 @@ const TrendingContainer = () => {
     );
 };
 
-export default TrendingContainer;
+export default NowPlayingContainer;

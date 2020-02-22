@@ -3,9 +3,9 @@ import { Switch, Route } from "react-router-dom";
 
 import Layout from "../layouts/Layout";
 import Loader from "../shared/components/Loader";
-import NotFound from "../components/NotFound";
+import NotFound from "../routes/NotFound";
 
-const Home = lazy(() => import("../components/Home/containers"));
+const Home = lazy(() => import("../routes/Home/containers"));
 
 const Routes = () => {
     return (
