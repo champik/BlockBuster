@@ -5,7 +5,7 @@ import Layout from "../layouts/Layout";
 import Loader from "../shared/components/Loader";
 import NotFound from "../routes/NotFound";
 
-const Home = lazy(() => import("../routes/Home/containers"));
+const Home = lazy(() => import("../routes/Home"));
 
 const Routes = () => {
     return (

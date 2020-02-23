@@ -1,4 +1,4 @@
-import { SET_nowPlaying, SET_TRAILER, SET_IMAGE } from "../constants/NowPlaying";
+import { SET_nowPlaying, SET_TRAILER, SET_IMAGE } from "./constants";
 
 export const setNowPlaying = data => {
     return {

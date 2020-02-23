@@ -1,10 +1,10 @@
 import React, { useEffect, useReducer } from "react";
 import { useDispatch } from "react-redux";
-import NowPlaying from "../components/NowPlaying";
-import { getNowPlaying } from "../services/NowPlaying";
+import NowPlaying from "./component";
+import { getNowPlaying } from "../services";
 import { getMovie, getMovieTrailer } from "../../../shared/services";
-import { reducer } from "../reducers/NowPlaying";
-import { setNowPlaying, setTrailer, setImage } from "../actions/NowPlaying";
+import { reducer } from "./reducer";
+import { setNowPlaying, setTrailer, setImage } from "./actions";
 import { minutesToHours } from "../../../utils/helpers";
 
 import { setLoading } from "../../../redux/loading/action";
