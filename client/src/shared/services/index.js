@@ -1,6 +1,6 @@
 import axios from "../../utils/axios";
 
-export const getMovie = async (movieId) => {
+export const fetchMovie = async (movieId) => {
     try{
         const res = await axios.get(`/movie/${movieId}`);
         return res.data;
@@ -9,7 +9,7 @@ export const getMovie = async (movieId) => {
     }
 }
 
-export const getMovieTrailer = async (movieId) => {
+export const fetchMovieTrailer = async (movieId) => {
     try{
         const res = await axios.get(`/movie/${movieId}/videos?`);
         return res.data.results;

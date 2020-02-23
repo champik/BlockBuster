@@ -19,9 +19,9 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "../style.scss";
 
-const Cinemas = (props) => {
-    const {title} = props;
-    const multipleSetting = {
+const Cinemas = props => {
+    const { title } = props;
+    const slidereSettings = {
         infinite: true,
         slidesToShow: 6,
         slidesToScroll: 6,
@@ -76,7 +76,7 @@ const Cinemas = (props) => {
                         <a href="#tab4-h2"> #Most reviewed</a>
                     </li>
                 </ul>
-                <Slider {...multipleSetting} className="slick-multiItem2">
+                <Slider {...slidereSettings} className="slick-multiItem2">
                     <div className="slide-it">
                         <div className="movie-item">
                             <div className="mv-img">

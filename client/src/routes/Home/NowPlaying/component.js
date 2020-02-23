@@ -12,73 +12,23 @@ import LogoTwitter from "react-ionicons/lib/LogoTwitter";
 import LogoGoogleplus from "react-ionicons/lib/LogoGoogleplus";
 import LogoYoutube from "react-ionicons/lib/LogoYoutube";
 import MdStar from "react-ionicons/lib/MdStar";
-import IosArrowBack from "react-ionicons/lib/IosArrowBack";
-import IosArrowForward from "react-ionicons/lib/IosArrowForward";
 
 import "react-modal-video/scss/modal-video.scss";
 
 const nowPlaying = props => {
-    const { nowPlaying, trailer, setTrailer, image, setImage } = props;
-    function PrevArrow(props) {
-        const { onClick } = props;
-        return (
-            <button onClick={onClick} className="slick-arrow slick-prev">
-                <IosArrowBack fontSize="60px" />
-            </button>
-        );
-    }
-
-    function NextArrow(props) {
-        const { onClick } = props;
-        return (
-            <button onClick={onClick} className="slick-arrow slick-next">
-                <IosArrowForward fontSize="60px" />
-            </button>
-        );
-    }
-
-    const settings = {
-        infinite: true,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        arrows: true,
-        dots: false,
-        draggable: true,
-        nextArrow: <NextArrow />,
-        prevArrow: <PrevArrow />,
-        afterChange: index => setImage(index),
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    infinite: true,
-                    dots: true,
-                    arrows: true
-                }
-            },
-            {
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                }
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    arrows: false
+    const { nowPlaying, trailer, setTrailer, image, sliderSettings } = props;
+    return (
+        <div
+            className="slider"
+            style={
+                image && {
+                    backgroundImage:
+                        "url(" + process.env.REACT_APP_IMAGE_URL + image + ")"
                 }
             }
-        ]
-    };
-    return (
-        <div className="slider" style={image && {backgroundImage: 'url(' + process.env.REACT_APP_IMAGE_URL + image + ')'}}>
+        >
             <div className="container">
-                <Slider {...settings}>
+                <Slider {...sliderSettings}>
                     {nowPlaying &&
                         nowPlaying.map(movie => {
                             return (

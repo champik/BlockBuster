@@ -1,8 +1,8 @@
-import { SET_nowPlaying, SET_TRAILER, SET_IMAGE } from "./constants";
+import { SET_NOWPLAYING, SET_TRAILER, SET_IMAGE } from "./constants";
 
 export const reducer = (state, action) => {
     switch (action.type) {
-        case SET_nowPlaying:
+        case SET_NOWPLAYING:
             return { ...state, nowPlaying: action.payload };
         case SET_TRAILER:
             return { ...state, trailer: action.payload };

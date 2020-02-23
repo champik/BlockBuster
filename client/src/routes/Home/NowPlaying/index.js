@@ -1,11 +1,15 @@
 import React, { useEffect, useReducer } from "react";
 import { useDispatch } from "react-redux";
 import NowPlaying from "./component";
-import { getNowPlaying } from "../services";
-import { getMovie, getMovieTrailer } from "../../../shared/services";
+import { fetchNowPlaying } from "../services";
 import { reducer } from "./reducer";
-import { setNowPlaying, setTrailer, setImage } from "./actions";
-import { minutesToHours } from "../../../utils/helpers";
+import { setNowPlaying, setTrailer, setBackground } from "./actions";
+
+import { SLIDER_SETTINGS } from "./constants";
+import IosArrowBack from "react-ionicons/lib/IosArrowBack";
+import IosArrowForward from "react-ionicons/lib/IosArrowForward";
+
+import { getMovie } from "../../../utils/helpers"
 
 import { setLoading } from "../../../redux/loading/action";
 
@@ -14,16 +18,16 @@ const NowPlayingContainer = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        getNowPlayingHandler();
+        getNowPlaying();
         // eslint-disable-next-line
     }, []);
 
-    const getNowPlayingHandler = async () => {
+    const getNowPlaying = async () => {
         dispatch(setLoading(true));
-        const nowPlayingList = await getNowPlaying();
+        const nowPlayingList = await fetchNowPlaying();
         Promise.all(
             nowPlayingList.map(async movie => {
-                const movieData = await getMovieHandler(movie.id);
+                const movieData = await getMovie(movie.id);
                 return {
                     id: movie.id,
                     title: movie.title,
@@ -38,31 +42,40 @@ const NowPlayingContainer = () => {
             .then(response => response.sort((a, b) => b.rating - a.rating))
             .then(response => {
                 dispatchAction(setNowPlaying(response));
-                dispatchAction(setImage(response[0].image));
+                dispatchAction(setBackground(response[0].image));
             })
             .then(() => dispatch(setLoading(false)));
-    };
-
-    const getMovieHandler = async id => {
-        const movie = await getMovie(id);
-        const video = await getMovieTrailer(id);
-        const trailer = video.find(video => video.type === "Trailer");
-        const movieData = {
-            genres: movie.genres,
-            tagline: movie.tagline,
-            runtime: minutesToHours(movie.runtime),
-            image: movie.backdrop_path,
-            trailer: trailer.key
-        };
-        return movieData;
     };
 
     const setTrailerHandler = key => {
         dispatchAction(setTrailer(key));
     };
-    const setImageHandler = index => {
-        const activeImage = state.nowPlaying[index].image;
-        dispatchAction(setImage(activeImage));
+
+    function PrevArrow(props) {
+        const { onClick } = props;
+        return (
+            <button onClick={onClick} className="slick-arrow slick-prev">
+                <IosArrowBack fontSize="60px" />
+            </button>
+        );
+    }
+
+    function NextArrow(props) {
+        const { onClick } = props;
+        return (
+            <button onClick={onClick} className="slick-arrow slick-next">
+                <IosArrowForward fontSize="60px" />
+            </button>
+        );
+    }
+    const sliderSettings = {
+        nextArrow: <NextArrow />,
+        prevArrow: <PrevArrow />,
+        afterChange: index => {
+            const currentImage = state.nowPlaying[index].image;
+            return dispatchAction(setBackground(currentImage));
+        },
+        ...SLIDER_SETTINGS
     };
 
     return (
@@ -71,7 +84,7 @@ const NowPlayingContainer = () => {
             trailer={state.trailer}
             setTrailer={setTrailerHandler}
             image={state.image}
-            setImage={setImageHandler}
+            sliderSettings={sliderSettings}
         />
     );
 };
