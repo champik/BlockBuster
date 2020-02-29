@@ -1,4 +1,4 @@
-export const SET_NOWPLAYING = "SET_NOWPLAYING";
+export const SET_TRENDING = "SET_TRENDING";
 export const SET_TRAILER = "SET_TRAILER";
 export const SET_IMAGE = "SET_IMAGE";
 

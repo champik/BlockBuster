@@ -47,7 +47,7 @@ const Cinemas = props => {
                 {isLoading ? (
                     <Spinner height="408px"/>
                 ) : (
-                    <Slider {...SLIDER_SETTINGS} className="slick-multiItem2">
+                    <Slider {...SLIDER_SETTINGS} className="slick-multiItem">
                         {movies &&
                             movies.map(movie => {
                                 return (

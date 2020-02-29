@@ -15,8 +15,8 @@ import MdStar from "react-ionicons/lib/MdStar";
 
 import "react-modal-video/scss/modal-video.scss";
 
-const NowPlaying = props => {
-    const { nowPlaying, trailer, setTrailer, image, sliderSettings } = props;
+const Tranding = props => {
+    const { trending, trailer, setTrailer, image, sliderSettings } = props;
     return (
         <div
             className="slider"
@@ -29,8 +29,8 @@ const NowPlaying = props => {
         >
             <div className="container">
                 <Slider {...sliderSettings}>
-                    {nowPlaying &&
-                        nowPlaying.map(movie => {
+                    {trending &&
+                        trending.map(movie => {
                             return (
                                 <div key={movie.id} className="movie-item">
                                     <div className="d-flex">
@@ -185,4 +185,4 @@ const NowPlaying = props => {
         </div>
     );
 };
-export default NowPlaying;
+export default Tranding;

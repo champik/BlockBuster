@@ -616,19 +616,16 @@
         position: relative;
     }
 
-    .slick-multiItem,
-    .slick-multiItem2 {
+    .slick-multiItem {
         display: flex;
         flex-direction: column;
     }
 
-    .slick-multiItem .slick-list,
-    .slick-multiItem2 .slick-list {
+    .slick-multiItem .slick-list{
         order: 2;
     }
 
-    .slick-multiItem .slick-dots,
-    .slick-multiItem2 .slick-dots {
+    .slick-multiItem .slick-dots {
         position: absolute;
         text-align: right;
         right: 15px;
@@ -668,8 +665,7 @@
 
 @media (max-width: 767px) {
     .movie-items {
-        .slick-multiItem .slick-dots,
-        .slick-multiItem2 .slick-dots {
+        .slick-multiItem .slick-dots{
             width: 100%;
             margin-left: 0;
             margin-top: 0;

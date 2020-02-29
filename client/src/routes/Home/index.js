@@ -1,12 +1,12 @@
 import React from "react";
-import NowPlaying from "./NowPlaying";
+import Trending from "./Trending";
 import CinemaSlider from "./Cinemas";
 import { CINEMAS } from "./constants";
 
 const Home = () => {
     return (
         <>
-            <NowPlaying />
+            <Trending />
             <div className="movie-items full-width">
                 <div className="row">
                     <div className="col-md-12">

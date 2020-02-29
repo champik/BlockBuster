@@ -1,8 +1,8 @@
-import { SET_NOWPLAYING, SET_TRAILER, SET_IMAGE } from "./constants";
+import { SET_TRENDING, SET_TRAILER, SET_IMAGE } from "./constants";
 
-export const setNowPlaying = data => {
+export const setTrending = data => {
     return {
-        type: SET_NOWPLAYING,
+        type: SET_TRENDING,
         payload: data
     };
 };

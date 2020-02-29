@@ -1,34 +1,32 @@
 import React, { useEffect, useReducer } from "react";
 import { useDispatch } from "react-redux";
-import NowPlaying from "./component";
-import { fetchCinemaList } from "../services";
+import Trending from "./component";
+import { fetchTrending } from "../services";
 import { reducer } from "./reducer";
-import { setNowPlaying, setTrailer, setBackground } from "./actions";
+import { setTrending, setTrailer, setBackground } from "./actions";
 
 import { SLIDER_SETTINGS } from "./constants";
-import { CINEMAS } from "../constants";
 import IosArrowBack from "react-ionicons/lib/IosArrowBack";
 import IosArrowForward from "react-ionicons/lib/IosArrowForward";
 
-import { getMovie } from "../../../utils/helpers"
+import { getMovie } from "../../../utils/helpers";
 
 import { setLoading } from "../../../redux/loading/action";
 
-const NowPlayingContainer = () => {
+const TrendingContainer = () => {
     const [state, dispatchAction] = useReducer(reducer, {});
     const dispatch = useDispatch();
 
     useEffect(() => {
-        getNowPlaying();
+        getTrending();
         // eslint-disable-next-line
     }, []);
 
-    const getNowPlaying = async () => {
+    const getTrending = async () => {
         dispatch(setLoading(true));
-        const movie = CINEMAS.find(movie => movie.type === "movie");
-        const nowPlayingList = await fetchCinemaList(movie.type, movie.categories[2].slag);
+        const trendingList = await fetchTrending();
         Promise.all(
-            nowPlayingList.map(async movie => {
+            trendingList.map(async movie => {
                 const movieData = await getMovie(movie.id);
                 return {
                     id: movie.id,
@@ -41,9 +39,10 @@ const NowPlayingContainer = () => {
                 };
             })
         )
+            .then(response => response.filter(movie => movie.trailer !== null))
             .then(response => response.sort((a, b) => b.rating - a.rating))
             .then(response => {
-                dispatchAction(setNowPlaying(response));
+                dispatchAction(setTrending(response));
                 dispatchAction(setBackground(response[0].image));
             })
             .then(() => dispatch(setLoading(false)));
@@ -74,15 +73,15 @@ const NowPlayingContainer = () => {
         nextArrow: <NextArrow />,
         prevArrow: <PrevArrow />,
         afterChange: index => {
-            const currentImage = state.nowPlaying[index].image;
+            const currentImage = state.trending[index].image;
             return dispatchAction(setBackground(currentImage));
         },
         ...SLIDER_SETTINGS
     };
 
     return (
-        <NowPlaying
-            nowPlaying={state.nowPlaying}
+        <Trending
+            trending={state.trending}
             trailer={state.trailer}
             setTrailer={setTrailerHandler}
             image={state.image}
@@ -91,4 +90,4 @@ const NowPlayingContainer = () => {
     );
 };
 
-export default NowPlayingContainer;
+export default TrendingContainer;

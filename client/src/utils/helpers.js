@@ -16,7 +16,7 @@ export const getMovie = async id => {
         tagline: movie.tagline,
         runtime: minutesToHours(movie.runtime),
         image: movie.backdrop_path,
-        trailer: trailer.key
+        trailer: trailer ? trailer.key : null
     };
     return movieData;
 };
