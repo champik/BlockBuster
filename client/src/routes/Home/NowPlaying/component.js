@@ -15,7 +15,7 @@ import MdStar from "react-ionicons/lib/MdStar";
 
 import "react-modal-video/scss/modal-video.scss";
 
-const nowPlaying = props => {
+const NowPlaying = props => {
     const { nowPlaying, trailer, setTrailer, image, sliderSettings } = props;
     return (
         <div
@@ -53,7 +53,7 @@ const nowPlaying = props => {
                                                     <Link
                                                         to={`movie/${movie.id}`}
                                                     >
-                                                        {movie.title}{" "}
+                                                        {movie.title}
                                                     </Link>
                                                 </h1>
                                                 <h2>{movie.tagline}</h2>
@@ -69,7 +69,7 @@ const nowPlaying = props => {
                                                     >
                                                         <i>
                                                             <IosPlay />
-                                                        </i>{" "}
+                                                        </i>
                                                         Watch Trailer
                                                     </button>
                                                     <a
@@ -78,7 +78,7 @@ const nowPlaying = props => {
                                                     >
                                                         <i>
                                                             <MdHeart fontSize="20px" />
-                                                        </i>{" "}
+                                                        </i>
                                                         Add to Favorite
                                                     </a>
                                                     <div className="hover-bnt">
@@ -88,7 +88,7 @@ const nowPlaying = props => {
                                                         >
                                                             <i>
                                                                 <MdShare fontSize="20px" />
-                                                            </i>{" "}
+                                                            </i>
                                                             share
                                                         </a>
                                                         <div className="hvr-item">
@@ -134,7 +134,7 @@ const nowPlaying = props => {
                                                         </i>
                                                         <span>
                                                             {movie.rating}
-                                                        </span>{" "}
+                                                        </span>
                                                         /10
                                                     </p>
                                                     <ul className="mv-infor">
@@ -185,4 +185,4 @@ const nowPlaying = props => {
         </div>
     );
 };
-export default nowPlaying;
+export default NowPlaying;

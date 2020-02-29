@@ -1,8 +1,8 @@
 import axios from "../../utils/axios";
 
-export const fetchNowPlaying = async () => {
+export const fetchCinemaList = async (type, category) => {
     try{
-        const res = await axios.get(`/movie/now_playing`);
+        const res = await axios.get(`/${type}/${category}`);
         return res.data.results;
     }catch(error){
         return error.response;

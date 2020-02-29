@@ -1,11 +1,12 @@
 import React, { useEffect, useReducer } from "react";
 import { useDispatch } from "react-redux";
 import NowPlaying from "./component";
-import { fetchNowPlaying } from "../services";
+import { fetchCinemaList } from "../services";
 import { reducer } from "./reducer";
 import { setNowPlaying, setTrailer, setBackground } from "./actions";
 
 import { SLIDER_SETTINGS } from "./constants";
+import { CINEMAS } from "../constants";
 import IosArrowBack from "react-ionicons/lib/IosArrowBack";
 import IosArrowForward from "react-ionicons/lib/IosArrowForward";
 
@@ -24,7 +25,8 @@ const NowPlayingContainer = () => {
 
     const getNowPlaying = async () => {
         dispatch(setLoading(true));
-        const nowPlayingList = await fetchNowPlaying();
+        const movie = CINEMAS.find(movie => movie.type === "movie");
+        const nowPlayingList = await fetchCinemaList(movie.type, movie.categories[2].slag);
         Promise.all(
             nowPlayingList.map(async movie => {
                 const movieData = await getMovie(movie.id);

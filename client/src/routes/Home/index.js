@@ -1,6 +1,7 @@
 import React from "react";
 import NowPlaying from "./NowPlaying";
 import CinemaSlider from "./Cinemas";
+import { CINEMAS } from "./constants";
 
 const Home = () => {
     return (
@@ -9,8 +10,16 @@ const Home = () => {
             <div className="movie-items full-width">
                 <div className="row">
                     <div className="col-md-12">
-                        <CinemaSlider title="Movies"/>
-                        <CinemaSlider title="Tv"/>
+                        {CINEMAS.map((cinema, index) => {
+                            return (
+                                <CinemaSlider
+                                    key={index}
+                                    title="Movies"
+                                    type={cinema.type}
+                                    categories={cinema.categories}
+                                />
+                            );
+                        })}
                     </div>
                 </div>
             </div>
