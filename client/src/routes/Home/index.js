@@ -14,7 +14,7 @@ const Home = () => {
                             return (
                                 <CinemaSlider
                                     key={index}
-                                    title="Movies"
+                                    title={cinema.name}
                                     type={cinema.type}
                                     categories={cinema.categories}
                                 />

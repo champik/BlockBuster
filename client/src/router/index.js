@@ -6,6 +6,7 @@ import Loader from "../shared/components/Loader";
 import NotFound from "../routes/NotFound";
 
 const Home = lazy(() => import("../routes/Home"));
+const Movie = lazy(() => import("../routes/Movie"));
 
 const Routes = () => {
     return (
@@ -14,6 +15,11 @@ const Routes = () => {
                 <Route exact path="/">
                     <Layout>
                         <Home />
+                    </Layout>
+                </Route>
+                <Route exact path="/movie">
+                    <Layout>
+                        <Movie />
                     </Layout>
                 </Route>
                 <Route component={NotFound} />

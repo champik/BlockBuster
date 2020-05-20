@@ -1,6 +1,7 @@
 export const CINEMAS = [
     {
         type: "movie",
+        name: "Movies",
         categories: [
             { id: 1, title: "Popular", slag: "popular" },
             { id: 2, title: "Top Rated", slag: "top_rated" },
@@ -10,6 +11,7 @@ export const CINEMAS = [
     },
     {
         type: "tv",
+        name: "Serials",
         categories: [
             { id: 1, title: "Popular", slag: "popular" },
             { id: 2, title: "Top Rated", slag: "top_rated" },

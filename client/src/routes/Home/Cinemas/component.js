@@ -52,7 +52,7 @@ const Cinemas = props => {
                             movies.map(movie => {
                                 return (
                                     <div className="movie-item" key={movie.id}>
-                                        <Link to={`movie/${movie.id}`}>
+                                        <Link to={`movie?id=${movie.id}`}>
                                             <div className="mv-img">
                                                 <img
                                                     src={`${process.env.REACT_APP_POSTER_URL}${movie.poster}`}
