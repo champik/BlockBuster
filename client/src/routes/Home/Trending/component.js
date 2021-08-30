@@ -51,7 +51,7 @@ const Tranding = props => {
                                                 </div>
                                                 <h1>
                                                     <Link
-                                                        to={`movie?id=${movie.id}`}
+                                                        to={`movie/${movie.id}`}
                                                     >
                                                         {movie.title}
                                                     </Link>
@@ -153,7 +153,7 @@ const Tranding = props => {
                                                     </ul>
                                                 </div>
                                                 <Link
-                                                    to={`movie?id=${movie.id}`}
+                                                    to={`movie/${movie.id}`}
                                                     className="item item-1 redbtn"
                                                 >
                                                     more detail
@@ -162,7 +162,7 @@ const Tranding = props => {
                                         </div>
                                         <div className="col-md-4 col-sm-12 col-xs-12">
                                             <div className="mv-img-2">
-                                                <Link to={`movie?id=${movie.id}`}>
+                                                <Link to={`movie/${movie.id}`}>
                                                     <img
                                                         src={`${process.env.REACT_APP_POSTER_URL}${movie.poster}`}
                                                         alt="poster"

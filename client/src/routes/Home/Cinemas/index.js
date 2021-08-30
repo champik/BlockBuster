@@ -8,9 +8,9 @@ import { reducer } from "./reducer";
 const CinemasContainer = props => {
     const { title, categories, type } = props;
 
-    const iniTialState = { activeCategory: categories[0].slag };
+    const initialState = { activeCategory: categories[0].slag };
 
-    const [state, dispatchAction] = useReducer(reducer, iniTialState);
+    const [state, dispatchAction] = useReducer(reducer, initialState);
 
     useEffect(() => {
         getMoviesList(state.activeCategory);

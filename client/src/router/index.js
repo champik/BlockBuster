@@ -17,7 +17,7 @@ const Routes = () => {
                         <Home />
                     </Layout>
                 </Route>
-                <Route exact path="/movie">
+                <Route exact path="/movie/:id">
                     <Layout>
                         <Movie />
                     </Layout>
