@@ -7,7 +7,7 @@ export const setMovies = data => {
     };
 };
 
-export const setactiveCategory = active => {
+export const setActiveCategory = active => {
     return {
         type: SET_ACTIVE_FILTER,
         payload: active

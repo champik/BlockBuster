@@ -5,6 +5,8 @@ import Layout from "../layouts/Layout";
 import Loader from "../shared/components/Loader";
 import NotFound from "../routes/NotFound";
 
+import { MOVIE, TV } from '../shared/constants';
+
 const Home = lazy(() => import("../routes/Home"));
 const Movie = lazy(() => import("../routes/Movie"));
 
@@ -19,7 +21,12 @@ const Routes = () => {
                 </Route>
                 <Route exact path="/movie/:id">
                     <Layout>
-                        <Movie />
+                        <Movie type={ MOVIE.type }/>
+                    </Layout>
+                </Route>
+                <Route exact path="/tv/:id">
+                    <Layout>
+                        <Movie type={ TV.type }/>
                     </Layout>
                 </Route>
                 <Route component={NotFound} />

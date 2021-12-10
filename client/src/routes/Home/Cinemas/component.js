@@ -14,7 +14,7 @@ import "slick-carousel/slick/slick-theme.css";
 import "../style.scss";
 
 const Cinemas = props => {
-    const { title, categories, movies, activeCategory, setactiveCategory, isLoading } = props;
+    const { title, categories, movies, type, activeCategory, setActiveCategory, isLoading } = props;
     return (
         <>
             <div className="title-hd">
@@ -35,7 +35,7 @@ const Cinemas = props => {
                                             : null
                                     }
                                     onClick={() =>
-                                        setactiveCategory(category.slag)
+                                        setActiveCategory(category.slag)
                                     }
                                 >
                                     #{category.title}
@@ -52,7 +52,7 @@ const Cinemas = props => {
                             movies.map(movie => {
                                 return (
                                     <div className="movie-item" key={movie.id}>
-                                        <Link to={`movie/${movie.id}`}>
+                                        <Link to={`${type}/${movie.id}`}>
                                             <div className="mv-img">
                                                 <img
                                                     src={`${process.env.REACT_APP_POSTER_URL}${movie.poster}`}
@@ -61,7 +61,7 @@ const Cinemas = props => {
                                             </div>
                                             <div className="hvr-inner redbtn">
                                                 Read more
-                                                <i className="ion-android-arrow-dropright"></i>
+                                                <IosArrowForward fontSize="15px" />
                                             </div>
                                             <div className="title-in">
                                                 <h6>{movie.title}</h6>

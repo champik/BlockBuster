@@ -1,7 +1,9 @@
+import { MOVIE, TV } from "../../shared/constants";
+
 export const CINEMAS = [
     {
-        type: "movie",
-        name: "Movies",
+        type: MOVIE.type,
+        name: `${MOVIE.name}s`,
         categories: [
             { id: 1, title: "Popular", slag: "popular" },
             { id: 2, title: "Top Rated", slag: "top_rated" },
@@ -10,8 +12,8 @@ export const CINEMAS = [
         ]
     },
     {
-        type: "tv",
-        name: "Serials",
+        type: TV.type,
+        name: `${TV.name}s`,
         categories: [
             { id: 1, title: "Popular", slag: "popular" },
             { id: 2, title: "Top Rated", slag: "top_rated" },
