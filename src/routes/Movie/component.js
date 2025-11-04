@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import moment from 'moment'
 
-import IosPlay from 'react-ionicons/lib/IosPlay'
 import MdHeart from 'react-ionicons/lib/MdHeart'
 import MdShare from 'react-ionicons/lib/MdShare'
 import LogoFacebook from 'react-ionicons/lib/LogoFacebook'
@@ -9,7 +8,6 @@ import LogoTwitter from 'react-ionicons/lib/LogoTwitter'
 import LogoGoogleplus from 'react-ionicons/lib/LogoGoogleplus'
 import LogoYoutube from 'react-ionicons/lib/LogoYoutube'
 import MdStar from 'react-ionicons/lib/MdStar'
-import MdStarOutline from 'react-ionicons/lib/MdStarOutline'
 import ModalVideo from 'react-modal-video'
 
 const Movie = ({ movie, renderRatingButtons }) => {

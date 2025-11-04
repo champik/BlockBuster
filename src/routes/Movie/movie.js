@@ -19,6 +19,7 @@ const MovieContainer = ({ type }) => {
 
 	useEffect(() => {
 		renderRatingButtons(rating)
+		// eslint-disable-next-line
 	}, [rating])
 
 	const getMovieHandler = async (type, id) => {
