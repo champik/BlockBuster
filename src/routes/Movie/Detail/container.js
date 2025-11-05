@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import Movie from './component'
 import { useParams } from 'react-router-dom'
-import { getMovie } from '../../utils/helpers'
-import Loader from '../../shared/components/Loader'
+import { getMovie } from '../../../utils/helpers'
+import Loader from '../../../shared/components/Loader'
 import MdStar from 'react-ionicons/lib/MdStar'
 import MdStarOutline from 'react-ionicons/lib/MdStarOutline'
 
